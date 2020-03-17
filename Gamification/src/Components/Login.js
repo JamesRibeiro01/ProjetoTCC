@@ -10,6 +10,7 @@ import {
     Keyboard
 } from "react-native";
 import LoginStyle from "../Styles/LoginStyle";
+import { Actions } from "react-native-router-flux";
 
 const Logo = require('../Images/logo.png')
 // const Logo2x = require('../Images/logo@2x.png')
@@ -95,10 +96,11 @@ export default function Login() {
                 <TextInput style = {LoginStyle.input}
                     placeholder="Senha"
                     autoCorrect={false}
+                    secureTextEntry = {true}
                     onChangeText={() => { }}
                 />
 
-                <TouchableOpacity style = {LoginStyle.btnSubmit}>
+                <TouchableOpacity style = {LoginStyle.btnSubmit} onPress = {()=>{Actions.Home();}}>
                     <Text style = {LoginStyle.submitText} >Acessar</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style = {LoginStyle.btnRegister}>
