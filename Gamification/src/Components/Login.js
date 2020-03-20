@@ -11,13 +11,14 @@ import {
 } from "react-native";
 import LoginStyle from "../Styles/LoginStyle";
 import { Actions } from "react-native-router-flux";
+import { connect } from "react-redux";
 
 const Logo = require('../Images/logo.png')
 // const Logo2x = require('../Images/logo@2x.png')
 // const Logo3x = require('../Images/logo@3x.png')
 
-export default function Login() {
-    
+const Login = props => {
+        
 
     const [offset] = useState(new Animated.ValueXY({x: 0, y:95}));
     const [opacity] = useState(new Animated.Value(0))
@@ -70,7 +71,7 @@ export default function Login() {
             })
         ]).start();
     }
-
+   // console.log(props);
     return (
         <KeyboardAvoidingView style = {LoginStyle.containerPrincipal}>
 
@@ -86,27 +87,38 @@ export default function Login() {
                     }]
                 }]}>
 
-
+                
                 <TextInput style = {LoginStyle.input}
+                    value ={props.matricula}
                     placeholder="Matricula"
                     autoCorrect={false}
                     onChangeText={() => { }}
                 />
 
                 <TextInput style = {LoginStyle.input}
+                    value = {props.senha}
                     placeholder="Senha"
                     autoCorrect={false}
                     secureTextEntry = {true}
                     onChangeText={() => { }}
                 />
 
-                <TouchableOpacity style = {LoginStyle.btnSubmit} onPress = {()=>{Actions.Home();}}>
+                <TouchableOpacity style = {LoginStyle.btnSubmit} onPress = {()=>{false}}>
                     <Text style = {LoginStyle.submitText} >Acessar</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style = {LoginStyle.btnRegister}>
+                <TouchableOpacity style = {LoginStyle.btnRegister} onPress = {()=>{Actions.Cadastro();}}>
                     <Text style = {LoginStyle.registerText}>Criar Conta</Text>
                 </TouchableOpacity>
             </Animated.View>
         </KeyboardAvoidingView>
     );
-}
+};
+
+
+const mapStateToProps = state => ({
+  matricula: state.AutenticacaoReducer.matricula,
+  senha: state.AutenticacaoReducer.senha
+});
+
+
+export default connect(mapStateToProps, null)(Login);
