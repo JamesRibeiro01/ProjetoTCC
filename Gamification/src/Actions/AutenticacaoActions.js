@@ -31,3 +31,9 @@ export const modificaSenha = (novaSenha) =>{
 
 
 
+export const cadastraUsuarioAluno = () =>{
+    alert('CHEGAMOS AQUI')
+    return{
+        type: 'teste'
+    }
+}

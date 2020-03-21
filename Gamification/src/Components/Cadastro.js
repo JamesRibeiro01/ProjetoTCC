@@ -1,54 +1,63 @@
-import React from "react";
+import React, { Component } from "react";
 import { TextInput, View, TouchableOpacity, Text, KeyboardAvoidingView } from "react-native";
 import LoginStyle from "../Styles/LoginStyle";
 import { connect } from "react-redux";
-import { modificaNomeAluno, modificaMatricula, modificaEmail, modificaSenha } from "../Actions/AutenticacaoActions";
+import { modificaNomeAluno, modificaMatricula, modificaEmail, modificaSenha, cadastraUsuarioAluno } from "../Actions/AutenticacaoActions";
 
 
-const Cadastro = props => (
-    <KeyboardAvoidingView style={LoginStyle.containerPrincipal}>
+class Cadastro extends Component {
+        //Função interna do objeto
+    _cadastraUsuarioAluno(){
+        this.props.cadastraUsuarioAluno();
+    }
+    render() {
+        return (
+            <KeyboardAvoidingView style={LoginStyle.containerPrincipal}>
 
-        <View style={LoginStyle.containerTextInput}>
+                <View style={LoginStyle.containerTextInput}>
 
-            <TextInput style={LoginStyle.input}
-                placeholder="Nome do Aluno"
-                value = {props.nomeAluno}
-                autoCorrect={false}
-                onChangeText = {novoNomeAluno => {props.modificaNomeAluno(novoNomeAluno)}}
-            />
+                    <TextInput style={LoginStyle.input}
+                        placeholder="Nome do Aluno"
+                        value={this.props.nomeAluno}
+                        autoCorrect={false}
+                        onChangeText={novoNomeAluno => { this.props.modificaNomeAluno(novoNomeAluno) }}
+                    />
 
-            <TextInput style={LoginStyle.input}
-                placeholder="Matricula"
-                value = {props.matricula}
-                autoCorrect={false}
-                keyboardType = {'numeric'}
-                onChangeText = {novaMatricula => {props.modificaMatricula(novaMatricula)}}
-            />
+                    <TextInput style={LoginStyle.input}
+                        placeholder="Matricula"
+                        value={this.props.matricula}
+                        autoCorrect={false}
+                        keyboardType={'numeric'}
+                        onChangeText={novaMatricula => { this.props.modificaMatricula(novaMatricula) }}
+                    />
 
-            <TextInput style={LoginStyle.input}
-                placeholder="Email"
-                value = {props.email}
-                autoCorrect={false}
-                onChangeText = {novoEmail => {props.modificaEmail(novoEmail)}}
-             />
+                    <TextInput style={LoginStyle.input}
+                        placeholder="Email"
+                        value={this.props.email}
+                        autoCorrect={false}
+                        onChangeText={novoEmail => { this.props.modificaEmail(novoEmail) }}
+                    />
 
 
-            <TextInput style={LoginStyle.input}
-                placeholder="Senha"
-                value = {props.senha}
-                autoCorrect={false}
-                onChangeText = {novaSenha =>{props.modificaSenha(novaSenha)}}
-                secureTextEntry
-            />
+                    <TextInput style={LoginStyle.input}
+                        placeholder="Senha"
+                        value={this.props.senha}
+                        autoCorrect={false}
+                        onChangeText={novaSenha => { this.props.modificaSenha(novaSenha) }}
+                        secureTextEntry
+                    />
 
-            <TouchableOpacity style={LoginStyle.btnSubmit} onPress={() => { false }}>
-                <Text style={LoginStyle.submitText} >Acessar</Text>
-            </TouchableOpacity>
+                    <TouchableOpacity style={LoginStyle.btnSubmit} onPress={() => { this._cadastraUsuarioAluno() }}>
+                        <Text style={LoginStyle.submitText} >Cadastrar</Text>
+                    </TouchableOpacity>
 
-        </View>
-    </KeyboardAvoidingView>
-);
+                </View>
+            </KeyboardAvoidingView>
 
+        );
+    }
+
+};
 
 
 const mapStateToProps = state => ({
@@ -59,4 +68,4 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps, {modificaNomeAluno, modificaMatricula, modificaEmail, modificaSenha})(Cadastro)
+export default connect(mapStateToProps, { modificaNomeAluno, modificaMatricula, modificaEmail, modificaSenha, cadastraUsuarioAluno })(Cadastro)

@@ -19,8 +19,7 @@ const Logo = require('../Images/logo.png')
 // const Logo3x = require('../Images/logo@3x.png')
 
 const Login = props => {
-   // console.log(props)
-
+    
     const [offset] = useState(new Animated.ValueXY({ x: 0, y: 95 }));
     const [opacity] = useState(new Animated.Value(0))
     const [logo] = useState(new Animated.ValueXY({ x: 130, y: 155 }))
@@ -89,18 +88,18 @@ const Login = props => {
             }]}>
 
 
-                <TextInput style={LoginStyle.input} 
+                <TextInput style={LoginStyle.input}
                     value={props.matricula}
                     placeholder="Matricula"
-                    onChangeText = {novaMatricula => {props.modificaMatricula(novaMatricula)}}
+                    onChangeText={novaMatricula => { props.modificaMatricula(novaMatricula) }}
                     autoCorrect={false}
-                    keyboardType = {'numeric'}
+                    keyboardType={'numeric'}
                 />
 
                 <TextInput style={LoginStyle.input}
                     value={props.senha}
                     placeholder="Senha"
-                    onChangeText = {novaSenha => {props.modificaSenha(novaSenha)}}
+                    onChangeText={novaSenha => { props.modificaSenha(novaSenha) }}
                     autoCorrect={false}
                     secureTextEntry
                 />
