@@ -1,3 +1,5 @@
+import firebase from "firebase";
+
 export const modificaNomeAluno = (novoNomeAluno) =>{
     return{
         type: 'modifica_nome_aluno',
@@ -31,8 +33,13 @@ export const modificaSenha = (novaSenha) =>{
 
 
 
-export const cadastraUsuarioAluno = () =>{
-    alert('CHEGAMOS AQUI')
+export const cadastraUsuarioAluno = ({nomeAluno, matricula, email, senha}) =>{
+
+    firebase.auth().createUserWithEmailAndPassword(email, senha)
+    .then(user => console.log(user))
+    .catch(error => console.log(error)
+    )
+
     return{
         type: 'teste'
     }

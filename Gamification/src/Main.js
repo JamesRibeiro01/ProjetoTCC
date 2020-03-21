@@ -27,7 +27,7 @@ export default class Main extends Component {
     //Erro sendo tratado aqui -> Firebase App named '[DEFAULT]' already exists (app/duplicate-app)
     if(!firebase.apps.length){
       firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
+      //firebase.analytics();
     }
     
   }
