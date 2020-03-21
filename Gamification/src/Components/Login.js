@@ -102,6 +102,7 @@ const Login = props => {
                     placeholder="Senha"
                     onChangeText = {novaSenha => {props.modificaSenha(novaSenha)}}
                     autoCorrect={false}
+                    secureTextEntry
                 />
 
                 <TouchableOpacity style={LoginStyle.btnSubmit} onPress={() => { false }}>

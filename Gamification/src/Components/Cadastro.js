@@ -38,6 +38,7 @@ const Cadastro = props => (
                 value = {props.senha}
                 autoCorrect={false}
                 onChangeText = {novaSenha =>{props.modificaSenha(novaSenha)}}
+                secureTextEntry
             />
 
             <TouchableOpacity style={LoginStyle.btnSubmit} onPress={() => { false }}>
