@@ -2,6 +2,9 @@ import React from "react";
 import { TextInput, View, TouchableOpacity, Text, KeyboardAvoidingView } from "react-native";
 import LoginStyle from "../Styles/LoginStyle";
 import { connect } from "react-redux";
+import { modificaNomeAluno, modificaMatricula, modificaEmail, modificaSenha } from "../Actions/AutenticacaoActions";
+
+
 const Cadastro = props => (
     <KeyboardAvoidingView style={LoginStyle.containerPrincipal}>
 
@@ -11,7 +14,7 @@ const Cadastro = props => (
                 placeholder="Nome do Aluno"
                 value = {props.nomeAluno}
                 autoCorrect={false}
-                onChangeText={() => { }}
+                onChangeText = {novoNomeAluno => {props.modificaNomeAluno(novoNomeAluno)}}
             />
 
             <TextInput style={LoginStyle.input}
@@ -19,23 +22,22 @@ const Cadastro = props => (
                 value = {props.matricula}
                 autoCorrect={false}
                 keyboardType = {'numeric'}
-                onChangeText={() => { }}
+                onChangeText = {novaMatricula => {props.modificaMatricula(novaMatricula)}}
             />
 
             <TextInput style={LoginStyle.input}
                 placeholder="Email"
                 value = {props.email}
                 autoCorrect={false}
-                onChangeText={() => { }}
-            />
+                onChangeText = {novoEmail => {props.modificaEmail(novoEmail)}}
+             />
 
 
             <TextInput style={LoginStyle.input}
                 placeholder="Senha"
                 value = {props.senha}
                 autoCorrect={false}
-                secureTextEntry={true}
-                onChangeText={() => { }}
+                onChangeText = {novaSenha =>{props.modificaSenha(novaSenha)}}
             />
 
             <TouchableOpacity style={LoginStyle.btnSubmit} onPress={() => { false }}>
@@ -56,4 +58,4 @@ const mapStateToProps = state => ({
 });
 
 
-export default connect(mapStateToProps, null)(Cadastro)
+export default connect(mapStateToProps, {modificaNomeAluno, modificaMatricula, modificaEmail, modificaSenha})(Cadastro)

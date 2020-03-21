@@ -3,7 +3,7 @@ import { Provider } from "react-redux";
 import {createStore} from 'redux';
 
 import Routes from "./Components/Routes";
-import reducers from "./Reducers";
+import reducers from "./Reducers/index";
 //import { Reducer } from 'react-native-router-flux';
 
 
