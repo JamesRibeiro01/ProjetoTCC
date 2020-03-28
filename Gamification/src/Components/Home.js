@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import HomeStyle from ".././Styles/HomeStyle";
+import { Actions } from "react-native-router-flux";
 
 
 export default class Home extends Component {
@@ -9,14 +10,26 @@ export default class Home extends Component {
   render() {
     return (
       <View style={HomeStyle.containerPrincipal}>
-
-        <View style = {HomeStyle.conteudoCentral}>
-        <Text> Home </Text>
+        <View style={HomeStyle.containerHead}>
+          <Text> Home </Text>
         </View>
 
-        <View style={HomeStyle.infoUsuario}>
-          <Text style={HomeStyle.textoInfo}>Nome do Usuario: Thiago Batista </Text>
-          <Text style={HomeStyle.textoInfo}>  Matricula do Usuario: 15221145623 </Text>
+        <View style={HomeStyle.LinhaView}></View>
+
+        <View style={HomeStyle.containerBody}>
+          <View style ={HomeStyle.infoPontos}>
+          <Text> 1000</Text>
+            <TouchableOpacity onPress = {()=>{Actions.HomePoints()}}>
+            <Text>Aplicar pontos</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
+
+        <View style={HomeStyle.LinhaView}></View>
+
+        <View style={HomeStyle.containerFooter}>
+          <Text style={HomeStyle.textoInfoUser}>Nome do Usuario: Thiago Batista </Text>
+          <Text style={HomeStyle.textoInfoUser}>  Matricula do Usuario: 15221145623 </Text>
         </View>
       </View>
     );
