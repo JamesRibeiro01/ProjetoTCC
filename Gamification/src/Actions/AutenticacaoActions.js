@@ -34,13 +34,22 @@ export const modificaSenha = (novaSenha) =>{
 
 
 export const cadastraUsuarioAluno = ({nomeAluno, matricula, email, senha}) =>{
-
     firebase.auth().createUserWithEmailAndPassword(email, senha)
-    .then(user => console.log(user))
-    .catch(error => console.log(error)
-    )
+    .then(user => cadastroUsuarioSucesso()) //recuperando os dados do usuario cadastrado
+    .catch(erro => cadastroUsuarioError(erro)) //erro caso de erro, function callback
+    
+}
 
+const cadastroUsuarioSucesso = ()=>{
+    console.log('Usuario cadastrado!');
     return{
-        type: 'teste'
+        type: 'Sucesso'
+    }
+}
+
+const cadastroUsuarioError = (erro)=>{
+    console.log(erro)
+    return{
+        type: 'Cadastro'
     }
 }

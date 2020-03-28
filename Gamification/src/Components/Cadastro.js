@@ -8,9 +8,13 @@ import { modificaNomeAluno, modificaMatricula, modificaEmail, modificaSenha, cad
 class Cadastro extends Component {
     //Função interna do objeto
     _cadastraUsuarioAluno() {
+        const nomeAluno = this.props.nomeAluno;
+        const matricula = this.props.matricula;
+        const email = this.props.email;
+        const senha = this.props.senha;
 
-        const { nomeAluno, matricula, email, senha } = this.props;
-        this.props.cadastraUsuarioAluno({ nomeAluno, matricula, email, senha });
+        // const { nomeAluno, matricula, email, senha } = this.props;
+       this.props.cadastraUsuarioAluno({ nomeAluno, matricula, email, senha });
 
     }
     render() {

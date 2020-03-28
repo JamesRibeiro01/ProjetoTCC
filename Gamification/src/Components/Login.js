@@ -87,7 +87,6 @@ const Login = props => {
                 }]
             }]}>
 
-
                 <TextInput style={LoginStyle.input}
                     value={props.matricula}
                     placeholder="Matricula"
@@ -104,7 +103,7 @@ const Login = props => {
                     secureTextEntry
                 />
 
-                <TouchableOpacity style={LoginStyle.btnSubmit} onPress={() => { false }}>
+                <TouchableOpacity style={LoginStyle.btnSubmit} onPress={() => { Actions.Home(); }}>
                     <Text style={LoginStyle.submitText} >Acessar</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={LoginStyle.btnRegister} onPress={() => { Actions.Cadastro(); }}>
