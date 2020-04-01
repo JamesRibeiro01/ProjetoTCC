@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import HomeStyle from ".././Styles/HomeStyle";
 import { Actions } from "react-native-router-flux";
-
+//import RouteScreens from "./RouteScreens";
 
 export default class Home extends Component {
 
