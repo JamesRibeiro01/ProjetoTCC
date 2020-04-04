@@ -54,6 +54,8 @@ class Cadastro extends Component {
                         secureTextEntry
                     />
 
+                    <Text style = {{color: '#ff0000', fontSize: 18}}>{this.props.errorCadastro}</Text>
+
                     <TouchableOpacity style={LoginStyle.btnSubmit} onPress={() => { this._cadastraUsuarioAluno() }}>
                         <Text style={LoginStyle.submitText} >Cadastrar</Text>
                     </TouchableOpacity>
@@ -71,7 +73,8 @@ const mapStateToProps = state => ({
     nomeAluno: state.AutenticacaoReducer.nomeAluno,
     matricula: state.AutenticacaoReducer.matricula,
     email: state.AutenticacaoReducer.email,
-    senha: state.AutenticacaoReducer.senha
+    senha: state.AutenticacaoReducer.senha,  
+    errorCadastro: state.AutenticacaoReducer.errorCadastro 
 });
 
 

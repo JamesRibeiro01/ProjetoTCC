@@ -1,4 +1,6 @@
 import firebase from "firebase";
+import {Actions} from 'react-native-router-flux';
+import b64 from "base-64";
 
 export const modificaNomeAluno = (novoNomeAluno) => {
     return {
@@ -8,7 +10,6 @@ export const modificaNomeAluno = (novoNomeAluno) => {
 }
 
 export const modificaMatricula = (novaMatricula) => {
-    //console.log(novaMatricula)
     return {
         type: 'modifica_matricula',
         payload: novaMatricula
@@ -34,10 +35,15 @@ export const modificaSenha = (novaSenha) => {
 
 
 export const cadastraUsuarioAluno = ({ nomeAluno, matricula, email, senha }) => {
-    return dispatch => {
+    return (dispatch) => {
 
         firebase.auth().createUserWithEmailAndPassword(email, senha)
-            .then(user => cadastroUsuarioSucesso(dispatch)) //recuperando os dados do usuario cadastrado
+            .then(user =>{ 
+                let emailB64 = b64.encode(email) //Convertendo o email para criptografica Base64
+                
+                firebase.database().ref('contatos/'+emailB64).push({nome: nomeAluno}).then(value => cadastroUsuarioSucesso(dispatch) )
+    
+            })  //recuperando os dados do usuario cadastrado
             .catch(erro => cadastroUsuarioError(erro, dispatch)) //erro caso de erro, function callback
 
 
@@ -46,10 +52,10 @@ export const cadastraUsuarioAluno = ({ nomeAluno, matricula, email, senha }) => 
 }
 
 const cadastroUsuarioSucesso = (dispatch) => {
-    dispatch({ type: 'Sucesso' }
-    )
+    dispatch({ type: 'cadastro_usuario_sucesso' });
+    Actions.BoasVindas();
 }
 
 const cadastroUsuarioError = (erro, dispatch) => {
-    dispatch({ type: 'error' })
+    dispatch({ type: 'cadastro_usuario_erro', payload: erro.message });
 }

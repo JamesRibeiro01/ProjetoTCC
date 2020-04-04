@@ -4,6 +4,7 @@ import Login from "./Login";
 import Cadastro from "./Cadastro";
 import HomePoints from './HomePoints'
 import { Home, EventScreen, NextEventScreen, ActivityScreen } from "./AllScreens";
+import BoasVindas from "./BoasVindas";
 
 export default class Main extends Component {
 
@@ -12,10 +13,11 @@ export default class Main extends Component {
       <Router>
         <Scene key='root'>
 
-          <Scene key='Login' component={Login} initial title='GamificationFaesa' hideNavBar />
-          <Scene key='Cadastro' component={Cadastro} title='Faça seu Cadastro' hideNavBar />
+          <Scene key='Login' component={Login} initial hideNavBar />
+          <Scene key='Cadastro' component={Cadastro} hideNavBar />
           <Scene key='Home' component={Home} title='Tela Home' hideNavBar />
           <Scene key='HomePoints' component={HomePoints} hideNavBar />
+          <Scene key='BoasVindas' component={BoasVindas}   hideNavBar/>
           
 
         </Scene>
