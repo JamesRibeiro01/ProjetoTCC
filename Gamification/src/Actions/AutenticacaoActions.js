@@ -41,7 +41,8 @@ export const cadastraUsuarioAluno = ({ nomeAluno, matricula, email, senha }) => 
             .then(user =>{ 
                 let emailB64 = b64.encode(email) //Convertendo o email para criptografica Base64
                 
-                firebase.database().ref('contatos/'+emailB64).push({nome: nomeAluno}).then(value => cadastroUsuarioSucesso(dispatch) )
+                firebase.database().ref('contatos/'+emailB64).push({nomeAluno: nomeAluno, matricula: matricula})
+                .then(value => cadastroUsuarioSucesso(dispatch) )
     
             })  //recuperando os dados do usuario cadastrado
             .catch(erro => cadastroUsuarioError(erro, dispatch)) //erro caso de erro, function callback
