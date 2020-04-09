@@ -1,6 +1,7 @@
 const INITIAL_STATE = {
     nomeAluno: '',
     matricula: '',
+    curso: '',
     email: '',
     senha: '',
     errorCadastro: ''
@@ -19,6 +20,11 @@ export default (state = INITIAL_STATE, action) => {
     if (action.type == 'modifica_email') {
         return { ...state, email: action.payload }
     }
+    
+    if (action.type == 'modifica_curso'){
+        return{...state, curso: action.payload}
+    }
+
     if (action.type == 'cadastro_usuario_erro') {
         return { ...state, errorCadastro: action.payload }
     }

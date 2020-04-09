@@ -16,6 +16,13 @@ export const modificaMatricula = (novaMatricula) => {
     }
 }
 
+export const modificaCurso = (novoCuro) => {
+    return {
+        type: 'modifica_curso',
+        payload: novoCuro
+    }
+}
+
 
 export const modificaEmail = (novoEmail) => {
     return {
@@ -34,15 +41,19 @@ export const modificaSenha = (novaSenha) => {
 
 
 
-export const cadastraUsuarioAluno = ({ nomeAluno, matricula, email, senha }) => {
+export const cadastraUsuarioAluno = ({ nomeAluno, matricula, email, senha, curso }) => {
     return (dispatch) => {
 
         firebase.auth().createUserWithEmailAndPassword(email, senha)
             .then(user =>{ 
                 let emailB64 = b64.encode(email) //Convertendo o email para criptografica Base64
                 
-                firebase.database().ref('contatos/'+emailB64).push({nomeAluno: nomeAluno, matricula: matricula})
-                .then(value => cadastroUsuarioSucesso(dispatch) )
+                firebase.database().ref('contatos/'+emailB64).push(
+                    {nomeAluno: nomeAluno, 
+                     matricula: matricula,
+                     curso: curso,
+                     senha: senha
+                    }).then(value => cadastroUsuarioSucesso(dispatch) )
     
             })  //recuperando os dados do usuario cadastrado
             .catch(erro => cadastroUsuarioError(erro, dispatch)) //erro caso de erro, function callback
