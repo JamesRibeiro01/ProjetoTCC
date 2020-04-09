@@ -48,7 +48,7 @@ export const cadastraUsuarioAluno = ({ nomeAluno, matricula, email, senha, curso
             .then(user =>{ 
                 let emailB64 = b64.encode(email) //Convertendo o email para criptografica Base64
                 
-                firebase.database().ref('contatos/'+emailB64).push(
+                firebase.database().ref(`/contatos/ ${emailB64}`).push(
                     {nomeAluno: nomeAluno, 
                      matricula: matricula,
                      curso: curso,
