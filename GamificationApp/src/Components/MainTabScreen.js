@@ -5,12 +5,12 @@ import Icon from "react-native-vector-icons/Ionicons";
 //import { Icon } from 'react-native-elements'
 import React, { Component } from 'react';
 import { View, Text } from 'react-native';
-import AboutScreen from "../Components/AboutScreen";
-import EventScreen from "../Components/EventScreen";
-import NextEvents from "../Components/NextEvents";
-import PointScreen from "../Components/PointScreen";
-import ProfileScreen from "../Components/ProfileScreen";
-import HomeScreen from "../Components/HomeScreen";
+import AboutScreen from "./AboutScreen";
+import EventScreen from "./EventScreen";
+import NextEvents from "./NextEvents";
+import PointScreen from "./PointScreen";
+import ProfileScreen from "./ProfileScreen";
+import HomeScreen from "./HomeScreen";
 import DrawerContent from "../Components/DrawerContent";
 
 
@@ -22,6 +22,55 @@ const EventStack = createStackNavigator();
 const AboutStack = createStackNavigator();
 
 const Drawer = createDrawerNavigator();
+
+const MainTabScreen = ()=>(
+    <Tab.Navigator
+    initialRouteName="Feed"
+    activeColor="#e91e63"
+    style={{ backgroundColor: 'tomato' }}
+  >
+    <Tab.Screen
+      name="HomeStack"
+      component={HomeStack}
+      options={{
+        tabBarLabel: 'Home',
+        tabBarIcon: ({ color }) => (
+          <MaterialCommunityIcons name="home" color={color} size={26} />
+        ),
+      }}
+    />
+    <Tab.Screen
+      name="ProfileStack"
+      component={ProfileStack}
+      options={{
+        tabBarLabel: 'Updates',
+        tabBarIcon: ({ color }) => (
+          <MaterialCommunityIcons name="bell" color={color} size={26} />
+        ),
+      }}
+    />
+       <Tab.Screen
+      name="PointScreen"
+      component={PointScreen}
+      options={{
+        tabBarLabel: 'Updates',
+        tabBarIcon: ({ color }) => (
+          <MaterialCommunityIcons name="bell" color={color} size={26} />
+        ),
+      }}
+    />
+    <Tab.Screen
+      name="PointStack"
+      component={PointStack}
+      options={{
+        tabBarLabel: 'Profile',
+        tabBarIcon: ({ color }) => (
+          <MaterialCommunityIcons name="account" color={color} size={26} />
+        ),
+      }}
+    />
+  </Tab.Navigator>
+);
 
 //HOMESCREENSTACK
 const HomeStackScreen = ({ navigation }) => {
