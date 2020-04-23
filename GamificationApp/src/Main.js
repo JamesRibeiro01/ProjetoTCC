@@ -4,7 +4,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import MainTabScreen from "./Screens/MainTabScreen";
 import {DrawerContent}from "./Screens/DrawerContent";
-
+import RootStackScreen from "./Screens/RootStackScreen";
 
 const Drawer = createDrawerNavigator();
 
@@ -12,9 +12,12 @@ const Drawer = createDrawerNavigator();
 const App = () => {
     return (
         <NavigationContainer>
-            <Drawer.Navigator  drawerContent = {props => <DrawerContent {...props} />}>
+            <RootStackScreen />
+            {
+                /*<Drawer.Navigator  drawerContent = {props => <DrawerContent {...props} />}>
                 <Drawer.Screen name="Home" component={MainTabScreen} />
-            </Drawer.Navigator>
+            </Drawer.Navigator> */
+            }
         </NavigationContainer>
     );
 }
