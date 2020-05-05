@@ -161,7 +161,7 @@ const SignInScreen = () => {
 
                         : null}
                 </View>
-                  
+
 
                 <Text style={styles.text_footer}>PassWord</Text>
 
@@ -178,19 +178,25 @@ const SignInScreen = () => {
                         autoCapitalize="none"
                         onChangeText={(value) => HandlerPassWordChange(value)}
                     />
-                    <TouchableOpacity onPress = {updateSecureTextEntry}>
+                    <TouchableOpacity onPress={updateSecureTextEntry}>
                         {data.secureTextEntry ?
-                        <Feather
-                           name="eye-off"
-                            color="green"
-                            size={20}
-                        />
-                         :
-                         <Feather name="eye"
-                            color="green"
-                            size={20}
-                        />}   
+                            <Feather
+                                name="eye-off"
+                                color="green"
+                                size={20}
+                            />
+                            :
+                            <Feather name="eye"
+                                color="green"
+                                size={20}
+                            />}
                     </TouchableOpacity>
+                </View>
+                <View style={styles.button}>
+                    <LinearGradient colors={['#08D4C4', '#01AB9D']}
+                        style={styles.signIn}>
+                        <Text style = {styles.signIn,{color:'#fff'}}>Sign In</Text>
+                    </LinearGradient>
                 </View>
             </View>
         </View>
