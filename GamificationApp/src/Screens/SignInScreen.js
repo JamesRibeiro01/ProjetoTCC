@@ -4,8 +4,7 @@ import LinearGradient from "react-native-linear-gradient";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import Feather from "react-native-vector-icons/Feather";
 import * as Animatable from "react-native-animatable"
-
-
+import { AuthContext } from "../Components/Context";
 
 const SignInScreen = ({navigation}) => {
 
@@ -15,6 +14,8 @@ const SignInScreen = ({navigation}) => {
         check_textInputChange: false,
         secureTextEntry: true
     });
+
+    const {signIn} = React.useContext(AuthContext);
 
     const textInputChange = (value) => {
         if (value.length != 0) {
@@ -110,16 +111,17 @@ const SignInScreen = ({navigation}) => {
                     </TouchableOpacity>
                 </View>
                 <View style={styles.button}>
-                    <LinearGradient colors={['#08D4C4', '#01AB9D']}
+                    <TouchableOpacity style = {styles.signIn}
+                    onPress = {()=>{signIn()}}>
+                    <LinearGradient  colors={['#08D4C4', '#01AB9D']}
                         style={styles.signIn}>
                         <Text style = {styles.signIn,{color:'#fff'}}>Sign In</Text>
                     </LinearGradient>
-
+                    </TouchableOpacity>
                     <TouchableOpacity onPress = {()=> navigation.navigate('SignUpScreen')}
                                        style = {[styles.signIn, {borderColor: '#009387', 
                                                                 borderWidth: 1, 
                                                                 marginTop: 15}]}>
-
                         <Text style = {styles.textSign}>Sign Up</Text>
 
                     </TouchableOpacity>

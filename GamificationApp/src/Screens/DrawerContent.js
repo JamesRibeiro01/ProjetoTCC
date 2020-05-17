@@ -17,11 +17,15 @@ import {
 
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
 
+import { AuthContext } from "../Components/Context";
+
 const fotoPeril = require('../img/foto1.jpg')
 
 export function DrawerContent(props) {
 
   const [isDarkThem, setIsDarkTheme] = React.useState(false);
+
+  const  {signOut} = React.useContext(AuthContext);
 
   const toggleTheme = ()=>{
     setIsDarkTheme(!isDarkThem)
@@ -111,7 +115,7 @@ export function DrawerContent(props) {
 
         )}
           label="Sign Out"
-          onPress={() => { }} />
+          onPress={() => { signOut() }} />
       </Drawer.Section>
     </View>
   );

@@ -9,6 +9,9 @@ import * as Animatable from "react-native-animatable"
 
 const SignInScreen = ({navigation}) => {
 
+    const _cadastroUsuario = ()=>{
+        alert('teste');
+    }
     const [data, setData] = React.useState({
         email: '',
         passWord: '',
@@ -192,7 +195,7 @@ const SignInScreen = ({navigation}) => {
                 </View>
                 <View style={styles.button}>
 
-                    <TouchableOpacity onPress = {()=> navigation.navigate('#')}
+                    <TouchableOpacity onPress = {()=> _cadastroUsuario()}
                                        style = {[styles.signIn, {backgroundColor: '#009387', 
                                                                 borderWidth: 1, 
                                                                 marginTop: 15}]}>
