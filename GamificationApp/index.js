@@ -3,7 +3,7 @@
  */
 import 'react-native-gesture-handler';
 import {AppRegistry, unstable_enableLogBox} from 'react-native';
-import Main from './src/Main';
+import Index from './src/Index';
 import {name as appName} from './app.json';
 unstable_enableLogBox();
-AppRegistry.registerComponent(appName, () => Main);
+AppRegistry.registerComponent(appName, () => Index);

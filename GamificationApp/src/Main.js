@@ -10,7 +10,6 @@ import HomeScreen from "./Screens/HomeScreen";
 import { DrawerContent } from "./Screens/DrawerContent";
 import RootStackScreen from "./Screens/RootStackScreen";
 import reducers from "./Components/Reducers/index";
-import firebase, { app } from "firebase";
 import { AuthContext } from "./Components/Context";
 
 

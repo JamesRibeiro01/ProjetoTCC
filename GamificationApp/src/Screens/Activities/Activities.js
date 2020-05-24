@@ -1,13 +1,13 @@
 import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import { Text, View, StyleSheet, ScrollView } from "react-native";
 
 export default function Activities(){
     return (
-        <View>
+        <ScrollView>
             <View style = {Estilos.ContainerHeader}>
 
             </View>
-        </View>
+        </ScrollView>
     );
 }
 
@@ -15,7 +15,7 @@ export default function Activities(){
 
 const Estilos = StyleSheet.create({
     ContainerView:{
-
+        
     },
 
     ContainerHeader:{

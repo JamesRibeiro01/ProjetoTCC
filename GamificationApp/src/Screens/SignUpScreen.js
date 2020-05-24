@@ -4,214 +4,149 @@ import LinearGradient from "react-native-linear-gradient";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import Feather from "react-native-vector-icons/Feather";
 import * as Animatable from "react-native-animatable"
+import firebase from "firebase";
 
 
+  class SignUpScreen extends Component {
+      constructor(props){
+        super(props);
 
-const SignInScreen = ({navigation}) => {
-
-    const _cadastroUsuario = ()=>{
-        alert('teste');
-    }
-    const [data, setData] = React.useState({
-        email: '',
-        passWord: '',
-        check_textInputChange: false,
-        secureTextEntry: true
-    });
-
-    const textInputChange = (value) => {
-        if (value.length != 0) {
-            setData({
-                ...data,
-                email: value,
-                check_textInputChange: true
-            });
-        } else {
-            setData({
-                ...data,
-                email: value,
-                check_textInputChange: false
-            })
+        this.state = {
+            UserName: 'x',
+            UserID: '',
+            userCourse: '',
+            userEmail: '',
+            userPassWord: ''
         }
-    };
+      }
 
-    const HandlerPassWordChange = (value) => {
-        setData({
-            ...data,
-            passWord: value,
+      _cadastroNovoUsuario(){
+          let getUserName = this.state.userName;
+          let getUserID = this.state.UserID;
+          let getUserCourse = this.state.userCourse;
+          let getUserEmail = this.state.userEmail;
+          let getUserPassWord = this.state.userPassWord;
 
+        firebase.auth()
+                .createUserWithEmailAndPassword(getUserEmail, getUserPassWord)
+                .then(user =>{alert('Usuario cadastrado com sucesso')})
+                .catch(error =>{alert('ERROR')});
+
+        firebase.database().ref('contatos').push({
+            curso: getUserCourse,
+            email: getUserEmail,
+            matricula: getUserID,
+            nome: getUserName
         })
-    }
-
-
-    const updateSecureTextEntry = () => {
-        setData({
-            ...data,
-            secureTextEntry: !data.secureTextEntry
-        });
-    }
-    return (
-        <View style={styles.container}>
-                        <StatusBar backgroundColor = '009387' barStyle = 'light-content' />
-            <View style={styles.header}>
-                <Text style={styles.text_header}>Welcome!</Text>
+                
+      }
+    render(){
+        return (
+            <View style={styles.container}>
+                <View style={styles.header}>
+                    <Text style={styles.text_header}>Welcome!</Text>
+                </View>
+                <View style={styles.footer} animation = "fadeInUpBig">
+                    
+                <Text style={styles.text_footer} >User Name</Text>
+                    <View style={styles.action}>
+                        <FontAwesome5
+                            name="user"
+                            color="#05375a"
+                            size={20}
+                        />
+                        <TextInput placeholder="Your Name"
+                            style={styles.styleTextInput}
+                            autoCapitalize="none"
+                            onChangeText ={(newUserName) =>{this.setState({userName: newUserName})}}
+                        />
+    
+                    </View>
+                    
+                    <Text style={styles.text_footer} >ID</Text>
+                    <View style={styles.action}>
+                        <FontAwesome5
+                            name="user"
+                            color="#05375a"
+                            size={20}
+                        />
+                        <TextInput placeholder="Your ID"
+                            style={styles.styleTextInput}
+                            autoCapitalize="none"
+                            keyboardType = 'numeric'
+                            onChangeText ={(newUserId) =>{this.setState({UserID: newUserId})}}
+                    />
+    
+                    </View>
+    
+                    <Text style={styles.text_footer} >Course</Text>
+                    <View style={styles.action}>
+                        <FontAwesome5
+                            name="user"
+                            color="#05375a"
+                            size={20}
+                        />
+                        <TextInput placeholder="Your Course"
+                            style={styles.styleTextInput}
+                            autoCapitalize="none"
+                            onChangeText ={(newUserCourse) =>{this.setState({userCourse: newUserCourse})}}
+                             />
+                    </View>
+                    
+                    
+                    <Text style={styles.text_footer} >Email</Text>
+                    <View style={styles.action}>
+                        <FontAwesome5
+                            name="user"
+                            color="#05375a"
+                            size={20}
+                        />
+                        <TextInput placeholder="Your Email"
+                            style={styles.styleTextInput}
+                            autoCapitalize="none"
+                            onChangeText ={(newUserEmail) =>{this.setState({userEmail: newUserEmail})}}
+                         />
+    
+                    </View>
+                    
+                    <Text style={styles.text_footer}>PassWord</Text>
+    
+    
+                    <View style={styles.action}>
+                        <Feather
+                            name="lock"
+                            color="#05375a"
+                            size={20}
+                        />
+                        <TextInput placeholder="Your PassWord"
+                            secureTextEntry={true}
+                            style={styles.styleTextInput}
+                            autoCapitalize="none"
+                            onChangeText ={(newUserPassWord) =>{this.setState({userPassWord: newUserPassWord})}}
+                        />
+           
+                    </View>
+                    <View style={styles.button}>
+    
+                        <TouchableOpacity onPress = {()=> this._cadastroNovoUsuario()}
+                                           style = {[styles.signIn, {backgroundColor: '#009387', 
+                                                                    borderWidth: 1, 
+                                                                    marginTop: 15}]}>
+    
+                            <Text style = {styles.textSign}>Submite new Account</Text>
+    
+                        </TouchableOpacity>
+    
+                    </View>
+                </View>
             </View>
-            <Animatable.View style={styles.footer} animation = "fadeInUpBig">
-                
-            <Text style={styles.text_footer} >User Name</Text>
-                <View style={styles.action}>
-                    <FontAwesome5
-                        name="user"
-                        color="#05375a"
-                        size={20}
-                    />
-                    <TextInput placeholder="Your Name"
-                        style={styles.styleTextInput}
-                        autoCapitalize="none"
-                        onChangeText={(value) => textInputChange(value)} />
-
-
-
-                    {data.check_textInputChange ?
-
-                        <Animatable.View animation="bounceIn">
-                            <Feather name="check-circle"
-                                color="green"
-                                size={20}
-                            />
-                        </Animatable.View>
-
-                        : null}
-                </View>
-                
-                <Text style={styles.text_footer} >ID</Text>
-                <View style={styles.action}>
-                    <FontAwesome5
-                        name="user"
-                        color="#05375a"
-                        size={20}
-                    />
-                    <TextInput placeholder="Your ID"
-                        style={styles.styleTextInput}
-                        autoCapitalize="none"
-                        keyboardType = 'numeric'
-                        onChangeText={(value) => textInputChange(value)} />
-
-
-
-                    {data.check_textInputChange ?
-
-                        <Animatable.View animation="bounceIn">
-                            <Feather name="check-circle"
-                                color="green"
-                                size={20}
-                            />
-                        </Animatable.View>
-
-                        : null}
-                </View>
-
-                <Text style={styles.text_footer} >Course</Text>
-                <View style={styles.action}>
-                    <FontAwesome5
-                        name="user"
-                        color="#05375a"
-                        size={20}
-                    />
-                    <TextInput placeholder="Your Course"
-                        style={styles.styleTextInput}
-                        autoCapitalize="none"
-                        onChangeText={(value) => textInputChange(value)} />
-
-
-
-                    {data.check_textInputChange ?
-
-                        <Animatable.View animation="bounceIn">
-                            <Feather name="check-circle"
-                                color="green"
-                                size={20}
-                            />
-                        </Animatable.View>
-
-                        : null}
-                </View>
-                
-                
-                <Text style={styles.text_footer} >Email</Text>
-                <View style={styles.action}>
-                    <FontAwesome5
-                        name="user"
-                        color="#05375a"
-                        size={20}
-                    />
-                    <TextInput placeholder="Your Email"
-                        style={styles.styleTextInput}
-                        autoCapitalize="none"
-                        onChangeText={(value) => textInputChange(value)} />
-
-
-
-                    {data.check_textInputChange ?
-
-                        <Animatable.View animation="bounceIn">
-                            <Feather name="check-circle"
-                                color="green"
-                                size={20}
-                            />
-                        </Animatable.View>
-
-                        : null}
-                </View>
-                
-                <Text style={styles.text_footer}>PassWord</Text>
-
-
-                <View style={styles.action}>
-                    <Feather
-                        name="lock"
-                        color="#05375a"
-                        size={20}
-                    />
-                    <TextInput placeholder="Your PassWord"
-                        secureTextEntry={data.secureTextEntry ? true : false}
-                        style={styles.styleTextInput}
-                        autoCapitalize="none"
-                        onChangeText={(value) => HandlerPassWordChange(value)}
-                    />
-                    <TouchableOpacity onPress={updateSecureTextEntry}>
-                        {data.secureTextEntry ?
-                            <Feather
-                                name="eye-off"
-                                color="green"
-                                size={20}
-                            />
-                            :
-                            <Feather name="eye"
-                                color="green"
-                                size={20}
-                            />}
-                    </TouchableOpacity>
-                </View>
-                <View style={styles.button}>
-
-                    <TouchableOpacity onPress = {()=> _cadastroUsuario()}
-                                       style = {[styles.signIn, {backgroundColor: '#009387', 
-                                                                borderWidth: 1, 
-                                                                marginTop: 15}]}>
-
-                        <Text style = {styles.textSign}>Submite new Account</Text>
-
-                    </TouchableOpacity>
-
-                </View>
-            </Animatable.View>
-        </View>
-    );
+        );
+    }
+    
 }
 
 
-export default SignInScreen;
+export default SignUpScreen;
 
 const styles = StyleSheet.create({
     container: {

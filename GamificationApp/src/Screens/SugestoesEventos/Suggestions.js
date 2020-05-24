@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, Image, ScrollView } from "react-native";
 const logo1 = require('../../img/01.png')
 
 
@@ -7,7 +7,7 @@ const logo1 = require('../../img/01.png')
 
 export default function Suggestions(){
    return(
-       <View style = {Estilos.SuggestionsContainer}>
+       <ScrollView horizontal style = {Estilos.SuggestionsContainer}>
            <TouchableOpacity style = {Estilos.ButtonStyle}>
                <Image source ={logo1}/>
                <Text>Evento 5</Text>
@@ -41,7 +41,7 @@ export default function Suggestions(){
                <Image source ={logo1}/>
                <Text>Evento 8</Text>
            </TouchableOpacity>
-       </View>
+       </ScrollView>
    );
 }
 
