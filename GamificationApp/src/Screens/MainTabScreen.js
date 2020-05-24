@@ -1,6 +1,8 @@
 import React from "react";
+import { Text } from "react-native";
 import { createStackNavigator } from "@react-navigation/stack";
-import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
+import { createMaterialBottomTabNavigator, } from "@react-navigation/material-bottom-tabs";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 
 import HomeScreen from "./HomeScreen";
@@ -16,7 +18,7 @@ const ProfileStack = createStackNavigator();
 const EventStack = createStackNavigator();
 const HistoryInformationStack = createStackNavigator();
 
-const Tab = createMaterialBottomTabNavigator();
+const Tab = createBottomTabNavigator();
 
 
 const MainTabScreen = () => (
@@ -91,89 +93,35 @@ const MainTabScreen = () => (
 HistoryInformationStackScreen
 export default MainTabScreen;
 
-const HomeStackScreen = ({ navigation }) => (
-    <HomeStack.Navigator screenOptions={{
-        headerStyle: {
-            backgroundColor: '#009387',
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-            fontWwight: 'bold'
-        }
-    }}>
+function HomeStackScreen({ navigation }) {
+    return (
+        <HomeScreen />
+    );
+}
 
-        <HomeStack.Screen name="home" component={HomeScreen} options={{
-            title: 'Home',
-        }} />
-    </HomeStack.Navigator>
-);
+function DetailedStackScreen({ navigation }) {
+    return (
+        <DetailedScreen />
+    );
+}
 
-const DetailedStackScreen = ({ navigation }) => (
-    <DetailedStack.Navigator screenOptions={{
-        headerStyle: {
-            backgroundColor: 'gray',
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-            fontWwight: 'bold'
-        }
-    }}>
+function ProfileStackScreen({ navigation }) {
+    return (
+        <ProfileScreen />
+    );
+};
 
-        <DetailedStack.Screen name="Ajustes" component={DetailedScreen} options={{
+function EventStackScreen({ navigation }) {
+    return (
+        <EventScreen />
+    );
 
-        }} />
-    </DetailedStack.Navigator>
-);
-
-const ProfileStackScreen = ({ navigation }) => (
-    <ProfileStack.Navigator screenOptions={{
-        headerStyle: {
-            backgroundColor: '#1f65ff',
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-            fontWwight: 'bold'
-        }
-    }}>
-
-        <ProfileStack.Screen name="Perfil" component={ProfileScreen} options={{
-
-        }} />
-    </ProfileStack.Navigator>
-);
-
-const EventStackScreen = ({ navigation }) => (
-    <EventStack.Navigator screenOptions={{
-        headerStyle: {
-            backgroundColor: '#d02860',
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-            fontWwight: 'bold'
-        }
-    }}>
-
-        <EventStack.Screen name="Eventos" component={EventScreen} options={{
-
-        }} />
-    </EventStack.Navigator>
-);
+}
 
 
-const HistoryInformationStackScreen = ({ navigation }) => (
-    <HistoryInformationStack.Navigator screenOptions={{
-        headerStyle: {
-            backgroundColor: 'black',
-        },
-        headerTintColor: '#fff',
-        headerTitleStyle: {
-            fontWwight: 'bold'
-        }
-    }}>
-
-        <HistoryInformationStack.Screen name="Historico" component={HistoryInformation} options={{
-
-        }} />
-    </HistoryInformationStack.Navigator>
-);
+function HistoryInformationStackScreen({ navigation }) {
+    return (
+        <HistoryInformation />
+    );
+}
 
