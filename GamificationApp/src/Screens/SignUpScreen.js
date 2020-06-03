@@ -43,19 +43,20 @@ import firebase from "firebase";
     render(){
         return (
             <View style={styles.container}>
+                <StatusBar backgroundColor = '#003266' barStyle = 'light-content' />
                 <View style={styles.header}>
-                    <Text style={styles.text_header}>Welcome!</Text>
+                    <Text style={styles.text_header}>Faça Seu Cadastro!</Text>
                 </View>
                 <View style={styles.footer} animation = "fadeInUpBig">
                     
-                <Text style={styles.text_footer} >User Name</Text>
+                <Text style={styles.text_footer} >Nome</Text>
                     <View style={styles.action}>
                         <FontAwesome5
                             name="user"
                             color="#05375a"
                             size={20}
                         />
-                        <TextInput placeholder="Your Name"
+                        <TextInput placeholder="Seu Nome"
                             style={styles.styleTextInput}
                             autoCapitalize="none"
                             onChangeText ={(newUserName) =>{this.setState({userName: newUserName})}}
@@ -63,14 +64,14 @@ import firebase from "firebase";
     
                     </View>
                     
-                    <Text style={styles.text_footer} >ID</Text>
+                    <Text style={styles.text_footer} >Matricula</Text>
                     <View style={styles.action}>
                         <FontAwesome5
                             name="user"
                             color="#05375a"
                             size={20}
                         />
-                        <TextInput placeholder="Your ID"
+                        <TextInput placeholder="Matricula"
                             style={styles.styleTextInput}
                             autoCapitalize="none"
                             keyboardType = 'numeric'
@@ -79,14 +80,14 @@ import firebase from "firebase";
     
                     </View>
     
-                    <Text style={styles.text_footer} >Course</Text>
+                    <Text style={styles.text_footer} >Curso</Text>
                     <View style={styles.action}>
                         <FontAwesome5
                             name="user"
                             color="#05375a"
                             size={20}
                         />
-                        <TextInput placeholder="Your Course"
+                        <TextInput placeholder="Curso"
                             style={styles.styleTextInput}
                             autoCapitalize="none"
                             onChangeText ={(newUserCourse) =>{this.setState({userCourse: newUserCourse})}}
@@ -101,7 +102,7 @@ import firebase from "firebase";
                             color="#05375a"
                             size={20}
                         />
-                        <TextInput placeholder="Your Email"
+                        <TextInput placeholder="Email"
                             style={styles.styleTextInput}
                             autoCapitalize="none"
                             onChangeText ={(newUserEmail) =>{this.setState({userEmail: newUserEmail})}}
@@ -109,7 +110,7 @@ import firebase from "firebase";
     
                     </View>
                     
-                    <Text style={styles.text_footer}>PassWord</Text>
+                    <Text style={styles.text_footer}>Senha</Text>
     
     
                     <View style={styles.action}>
@@ -118,7 +119,7 @@ import firebase from "firebase";
                             color="#05375a"
                             size={20}
                         />
-                        <TextInput placeholder="Your PassWord"
+                        <TextInput placeholder="Senha"
                             secureTextEntry={true}
                             style={styles.styleTextInput}
                             autoCapitalize="none"
@@ -129,11 +130,11 @@ import firebase from "firebase";
                     <View style={styles.button}>
     
                         <TouchableOpacity onPress = {()=> this._cadastroNovoUsuario()}
-                                           style = {[styles.signIn, {backgroundColor: '#009387', 
+                                           style = {[styles.signIn, {backgroundColor: '#002B64', 
                                                                     borderWidth: 1, 
                                                                     marginTop: 15}]}>
     
-                            <Text style = {styles.textSign}>Submite new Account</Text>
+                            <Text style = {styles.textSign}>Criar Conta</Text>
     
                         </TouchableOpacity>
     
@@ -151,7 +152,7 @@ export default SignUpScreen;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#009387'
+        backgroundColor: '#003266'
     },
     header: {
         flex: 1,
@@ -202,6 +203,6 @@ const styles = StyleSheet.create({
     },
     textSign: {
         fontSize: 18,
-        fontWeight: 'bold'
+        color: 'white'
     }
 });

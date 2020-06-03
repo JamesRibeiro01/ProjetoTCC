@@ -30,10 +30,10 @@ const MainTabScreen = () => (
             name="HomeStackScreen"
             component={HomeStackScreen}
             options={{
-                tabBarLabel: 'Home',
+                tabBarLabel: 'Inicio',
                 tabBarColor: '#009387',
                 tabBarIcon: ({ color }) => (
-                    <MaterialCommunityIcons name="home" color={color} size={26} />
+                    <MaterialCommunityIcons name="Inicio" color={color} size={26} />
                 ),
             }}
         />
@@ -49,17 +49,6 @@ const MainTabScreen = () => (
                 ),
             }}
         />
-        <Tab.Screen
-            name="ProfileScreen"
-            component={ProfileStackScreen}
-            options={{
-                tabBarLabel: 'Perfil',
-                tabBarColor: '#1f65ff',
-                tabBarIcon: ({ color }) => (
-                    <MaterialCommunityIcons name="account" color={color} size={26} />
-                ),
-            }}
-        />
 
         <Tab.Screen
             name="HistoryInformationStackScreen"
@@ -69,19 +58,6 @@ const MainTabScreen = () => (
                 tabBarColor: 'black',
                 tabBarIcon: ({ color }) => (
                     <MaterialCommunityIcons name="history" color={color} size={26} />
-                ),
-            }}
-        />
-
-
-        <Tab.Screen
-            name="DetailedStackScreen"
-            component={DetailedStackScreen}
-            options={{
-                tabBarLabel: 'Ajustes',
-                tabBarColor: 'gray',
-                tabBarIcon: ({ color }) => (
-                    <MaterialCommunityIcons name="settings" color={color} size={26} />
                 ),
             }}
         />

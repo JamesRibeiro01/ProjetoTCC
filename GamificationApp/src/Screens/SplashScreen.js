@@ -1,29 +1,29 @@
 import React, { Component } from 'react';
-import { View, Text, StyleSheet, Dimensions, Image,TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Dimensions, Image,TouchableOpacity, StatusBar } from 'react-native';
 import LinearGradient from "react-native-linear-gradient";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
 import * as Animatable from "react-native-animatable"
 
-const logo = require('../img/foto1.jpg');
+const logo = require('../img/Logo1.png');
 
 const SplashScreen = ({navigation}) => {
     return (
         <View style={styles.container}>
+            <StatusBar backgroundColor = '#003266' barStyle = 'light-content' />
             <View style={styles.header}>
-                <Animatable.Image animation = "bounceIn" duration = "1500" source = {logo} style = {styles.logo} resizeMode = "stretch"/>
+                <Animatable.Image animation = "bounceIn" source = {logo} style = {styles.logo} resizeMode = "stretch"/>
             </View>
 
             <Animatable.View style={styles.footer} animation = "fadeInUpBig">
-                <Text style = {styles.title}>Stay connected with everyone!</Text>
-                <Text style = {styles.text}>Sign in with account!</Text>
+                <Text style = {styles.title}>FAESA Gamification</Text>
                 <View style = {styles.button}>
                 <TouchableOpacity onPress ={()=>navigation.navigate('SignInScreen')}>
                     <LinearGradient 
                     
-                         colors = {['#08d4c4','#01ab9d']}
+                         colors = {['#002B64','#66C5E3']}
                          style ={styles.signIn}
                     >
-                        <Text style = {styles.textSign}>Get Started</Text>
+                        <Text style = {styles.textSign}>Iniciar</Text>
                         <MaterialIcons 
                             name = "navigate-next" color = "#fff" size = {20}
                         />
@@ -45,7 +45,7 @@ const height_logo = height * 0.28;
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: '#009387'
+        backgroundColor: '#003266'
     },
     header: {
         flex: 2,
