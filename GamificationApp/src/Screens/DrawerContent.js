@@ -52,7 +52,7 @@ export function DrawerContent(props) {
                   size={size} />
 
               )}
-                label="Home"
+                label="Inicio"
                 onPress={() => { props.navigation.navigate('HomeStackScreen') }} />
 
 
@@ -65,14 +65,6 @@ export function DrawerContent(props) {
                 label="Eventos"
                 onPress={() => { props.navigation.navigate('EventStackScreen') }} />
 
-              <DrawerItem icon={({ color, size }) => (
-                <Icon name="account-outline"
-                  color={color}
-                  size={size} />
-
-              )}
-                label="Perfil"
-                onPress={() => { props.navigation.navigate('ProfileScreen') }} />
 
               <DrawerItem icon={({ color, size }) => (
                 <Icon name="history-outline"
@@ -83,14 +75,7 @@ export function DrawerContent(props) {
                 label="Historico"
                 onPress={() => { props.navigation.navigate('HistoryInformationStackScreen') }} />
 
-              <DrawerItem icon={({ color, size }) => (
-                <Icon name="settings-outline"
-                  color={color}
-                  size={size} />
-
-              )}
-                label="Ajustes"
-                onPress={() => { props.navigation.navigate('DetailedStackScreen') }} />
+      
 
             </Drawer.Section>
             <Drawer.Section title = "Preferences">

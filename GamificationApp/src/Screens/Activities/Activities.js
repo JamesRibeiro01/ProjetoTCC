@@ -1,24 +1,23 @@
 import React from "react";
-import { Text, View, StyleSheet, ScrollView } from "react-native";
+import { StyleSheet, Text, View, Button } from "react-native";
 
 export default function Activities(){
-    return (
-        <ScrollView>
-            <View style = {Estilos.ContainerHeader}>
-
-            </View>
-        </ScrollView>
-    );
+     return(
+         <View style = {Estilos.containerView}>
+             <View style = {Estilos.containerView}>
+             </View>
+         </View>
+     );
 }
 
 
 
 const Estilos = StyleSheet.create({
-    ContainerView:{
-        
-    },
+    containerView:{
 
-    ContainerHeader:{
+
+    },
+    headerView:{
         height: 50,
         backgroundColor: 'red'
     }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View, StyleSheet, ScrollView } from "react-native";
 import Suggestions from "./SugestoesEventos/Suggestions";
-import Activities from "./Activities/Activities";
+import Activitie from "./Activities/Activities";
 
 
 export default function HomeScreen() {
@@ -9,18 +9,22 @@ export default function HomeScreen() {
 
         <View style={Wrapper.WrapperMain}>
 
-                <View style={Wrapper.WrapperHeader}>
-                    <View style={Wrapper.WrapperBalanceContainer}>
-                        <Text style={Wrapper.WrapperBalanceTitle}>FAESA POINTS</Text>
-                    </View>
-                    <View style={Wrapper.WrapperBalanceTitle}>
-                        <Text style={Wrapper.WrapperBalance}>FP: 1000</Text>
-                    </View>
+            <View style={Wrapper.WrapperHeader}>
+                <View style={Wrapper.WrapperBalanceContainer}>
+                    <Text style={Wrapper.WrapperBalanceTitle}>FAESA POINTS</Text>
                 </View>
+                <View style={Wrapper.WrapperBalanceTitle}>
+                    <Text style={Wrapper.WrapperBalance}>FP: 1000</Text>
+                </View>
+            </View>
             <View>
                 <Suggestions />
-                <Activities />
+                <View style={Estilos.containerView}>
+                    <View style={Estilos.containerView}>
+                    </View>
+                </View>
             </View>
+
         </View>
 
     )
@@ -57,4 +61,16 @@ const Wrapper = StyleSheet.create({
     },
 
 
+});
+
+
+const Estilos = StyleSheet.create({
+    containerView:{
+
+
+    },
+    headerView:{
+        height: 50,
+        backgroundColor: 'red'
+    }
 });
