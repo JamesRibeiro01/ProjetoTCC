@@ -25,9 +25,9 @@ export function DrawerContent(props) {
 
   const [isDarkThem, setIsDarkTheme] = React.useState(false);
 
-  const  {signOut} = React.useContext(AuthContext);
+  const { signOut } = React.useContext(AuthContext);
 
-  const toggleTheme = ()=>{
+  const toggleTheme = () => {
     setIsDarkTheme(!isDarkThem)
   }
   return (
@@ -75,15 +75,13 @@ export function DrawerContent(props) {
                 label="Historico"
                 onPress={() => { props.navigation.navigate('HistoryInformationStackScreen') }} />
 
-      
-
             </Drawer.Section>
-            <Drawer.Section title = "Preferences">
-              <TouchableRipple onPress = {()=>{toggleTheme()}}>
+            <Drawer.Section title="Preferences">
+              <TouchableRipple onPress={() => { toggleTheme() }}>
                 <View style={styles.preference}>
                   <Text>Dark Theme</Text>
-                  <View pointerEvents = "none">
-                  <Switch value = {isDarkThem}/>
+                  <View pointerEvents="none">
+                    <Switch value={isDarkThem} />
                   </View>
                 </View>
               </TouchableRipple>

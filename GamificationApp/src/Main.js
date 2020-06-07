@@ -7,6 +7,7 @@ import EventScreen from "./Screens/EventScreen";
 import HistoryInformation from "./Screens/HistoryInformation";
 import ProfileScreen from "./Screens/ProfileScreen";
 import HomeScreen from "./Screens/HomeScreen";
+import BeneficiosList from "./Screens/BeneficiosList";
 import { DrawerContent } from "./Screens/DrawerContent";
 import RootStackScreen from "./Screens/RootStackScreen";
 import reducers from "./Components/Reducers/index";
@@ -59,6 +60,7 @@ const App = () => {
                         <Drawer.Screen name="EventScreen" component={EventScreen} />
                         <Drawer.Screen name="ProfileScreen" component={ProfileScreen} />
                         <Drawer.Screen name="HistoryInformation" component={HistoryInformation} />
+                        <Drawer.Screen name="BeneficiosList" component = {BeneficiosList} />
                     </Drawer.Navigator>
                 ) :
                     <RootStackScreen />

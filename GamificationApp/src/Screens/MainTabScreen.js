@@ -10,13 +10,9 @@ import DetailedScreen from "./DetailedScreen";
 import ProfileScreen from "./ProfileScreen";
 import EventScreen from "./EventScreen";
 import HistoryInformation from "./HistoryInformation";
+import BeneficiosList from "./BeneficiosList";
 
 
-const HomeStack = createStackNavigator();
-const DetailedStack = createStackNavigator();
-const ProfileStack = createStackNavigator();
-const EventStack = createStackNavigator();
-const HistoryInformationStack = createStackNavigator();
 
 const Tab = createBottomTabNavigator();
 
@@ -66,12 +62,17 @@ const MainTabScreen = () => (
 );
 
 
-HistoryInformationStackScreen
 export default MainTabScreen;
 
 function HomeStackScreen({ navigation }) {
     return (
         <HomeScreen />
+    );
+}
+
+function BeneficiosListScreen({navigation}){
+    return(
+        <BeneficiosList />
     );
 }
 
