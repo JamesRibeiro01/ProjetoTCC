@@ -30,9 +30,9 @@ import firebase from "firebase";
         firebase.auth()
                 .createUserWithEmailAndPassword(getUserEmail, getUserPassWord)
                 .then(user =>{alert('Usuario cadastrado com sucesso')})
-                .catch(error =>{alert('ERROR')});
+                .catch(error =>{null});
 
-        firebase.database().push({
+        firebase.database().ref(getUserName).set({
             curso: getUserCourse,
             email: getUserEmail,
             matricula: getUserID,
