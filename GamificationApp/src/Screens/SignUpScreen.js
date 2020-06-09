@@ -32,7 +32,7 @@ import firebase from "firebase";
                 .then(user =>{alert('Usuario cadastrado com sucesso')})
                 .catch(error =>{alert('ERROR')});
 
-        firebase.database().ref('contatos').push({
+        firebase.database().push({
             curso: getUserCourse,
             email: getUserEmail,
             matricula: getUserID,
